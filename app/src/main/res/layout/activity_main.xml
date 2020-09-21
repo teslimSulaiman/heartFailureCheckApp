@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
         
         <include
                 android:id="@+id/tool_bar"
@@ -54,6 +54,7 @@
                             android:textSize="30sp"
                             />
                         <CheckBox
+                            android:id="@+id/sinus_checkbox"
                             android:layout_width="0sp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -78,6 +79,7 @@
                     android:textSize="30sp"
                     />
                 <CheckBox
+                    android:id="@+id/arrhy_checkbox"
                     android:layout_width="0sp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -102,6 +104,7 @@
                     android:textSize="30sp"
                     />
                 <CheckBox
+                    android:id="@+id/conduction_checkbox"
                     android:layout_width="0sp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -126,6 +129,7 @@
                     android:textSize="30sp"
                     />
                 <CheckBox
+                    android:id="@+id/left_checkbox"
                     android:layout_width="0sp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"

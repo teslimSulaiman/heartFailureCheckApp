@@ -83,10 +83,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_online:
-                //addSomething();
+                //TODO: addSomething();
                 return true;
             case R.id.about_us:
-                //startSettings();
+                //TODO: addSomething();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
             }
         });
         builder.show();

@@ -1,5 +1,5 @@
 package com.example.medapp.presenter;
-
+//TODO: Try making this a singleton class
 import com.example.medapp.model.User;
 
 public class MainActivityPresenter {
@@ -19,6 +19,7 @@ public class MainActivityPresenter {
         view.setDialogStyle(user.dialogStyle());
         view.displayMessageOnDialog(user.builderMessage());
     }
+
     public interface View{
         void setDialogStyle(int style);
         void displayMessageOnDialog(String message);

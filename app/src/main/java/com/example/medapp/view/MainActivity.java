@@ -6,6 +6,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,15 +16,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.medapp.R;
+import com.example.medapp.model.User;
 import com.example.medapp.presenter.MainActivityPresenter;
+import com.example.medapp.viewmodel.MedViewModel;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View {
 
+    @BindView(R.id.patient_name)
+    TextView patientName;
     @BindView(R.id.sex_spinner) Spinner sexSpinner;
     @BindView(R.id.calculate)
     Button calculateButton;
@@ -35,14 +42,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
     CheckBox conductionCheckbox;
     @BindView(R.id.left_checkbox)
     CheckBox leftCheckbox;
-    int totalScore = 0;
+    @BindView(R.id.patient_age)
+    TextView patientAge;
     private MainActivityPresenter presenter;
+    private MedViewModel medViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        medViewModel = ViewModelProviders.of(this).get(MedViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("MedApp");
@@ -64,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
                     return;
                 }
 
-                presenter.UpdateDialog(sinusCheckbox.isChecked(), arrhyCheckbox.isChecked(), conductionCheckbox.isChecked(), leftCheckbox.isChecked());
+                presenter.UpdateDialog(patientName.getText().toString(), sinusCheckbox.isChecked(), arrhyCheckbox.isChecked(), conductionCheckbox.isChecked(), leftCheckbox.isChecked(), patientAge.getText().toString(), sexSpinner.getSelectedItem().toString());
             }
         });
 
@@ -85,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
             case R.id.action_online:
                 //TODO: addSomething();
                 return true;
+            case R.id.records:
+                //TODO: addSomething();
+                Intent intent = new Intent(MainActivity.this, RecordActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.about_us:
                 //TODO: addSomething();
                 return true;
@@ -92,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
                 return super.onOptionsItemSelected(item);
         }
     }
+
     AlertDialog.Builder builder;
 
     @Override
@@ -104,13 +120,25 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
 
         builder.setTitle("Heart Failure Diagnostic");
         builder.setMessage(message);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.AddToDatabase();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void saveToDatabase(User user) {
+        medViewModel.insert(user);
+        Toast.makeText(this, "Record Saved Successfully", Toast.LENGTH_SHORT).show();
     }
 
 }

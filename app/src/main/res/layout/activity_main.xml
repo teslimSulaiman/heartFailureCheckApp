@@ -13,189 +13,281 @@
 
                 />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-                >
         <TextView
+            android:layout_below="@+id/tool_bar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/text_view"
-            android:text="ECG Diagnostic Score"
+            android:text="ECG Diagnostic Calculator"
             android:gravity="center_horizontal"
             android:maxLines="1"
             android:textSize="30sp"
             android:layout_centerHorizontal="true"
-            android:paddingBottom="10dp"
-             />
+            android:layout_height="48dp"
+            android:textStyle="bold"
+            />
 
-                <LinearLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_view">
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/text_view"
-                    android:id="@+id/sinus"
-                    android:paddingBottom="20dp"
-                    >
-                        <TextView
-                            android:layout_width="0sp"
-                            android:layout_weight="3"
-                            android:layout_height="wrap_content"
-                            android:text="Sinus tachycardia"
-                            android:textSize="30sp"
-                            />
-                        <CheckBox
-                            android:id="@+id/sinus_checkbox"
-                            android:layout_width="0sp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:checked="false"
-                            />
-
-                </LinearLayout>
+                    android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/card_divider_gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Patient Name"
+                            android:textSize="28sp"
+
+                            />
+
+                        <EditText
+                            android:id="@+id/patient_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:inputType="text"
+                            android:text="Anonymous"
+                            android:textSize="25sp"
+                            android:paddingRight="10dp"
+                            />
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sinus"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sinus tachycardia"
+                            android:textSize="25sp"
+                            android:gravity="center"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/sinus_checkbox"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:checked="false"
+                            android:gravity="center"
+                            />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/sinus"
             android:id="@+id/arrhy"
-            android:paddingBottom="20dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
             >
                 <TextView
-                    android:layout_width="0sp"
-                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="arrhythmia"
-                    android:textSize="30sp"
+                    android:text="Arrhythmia"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
                     />
                 <CheckBox
                     android:id="@+id/arrhy_checkbox"
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
                     android:checked="false"
+                    android:gravity="center"
                     />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:id="@+id/conduction"
-            android:layout_below="@+id/arrhy"
-            android:paddingBottom="20dp"
-            >
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp">
                 <TextView
-                    android:layout_width="0sp"
-                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="conduction abnormality"
-                    android:textSize="30sp"
+                    android:text="Conduction Abnormality"
+                    android:textSize="25sp"
+                    android:paddingRight="10dp"
                     />
                 <CheckBox
                     android:id="@+id/conduction_checkbox"
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
                     android:checked="false"
+                    android:gravity="center"
                     />
 
-        </LinearLayout>
+        </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/conduction"
             android:id="@+id/left"
-            android:paddingBottom="20dp"
-            >
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp">
                 <TextView
-                    android:layout_width="0sp"
-                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="left ventricular hypertrophy"
-                    android:textSize="30sp"
+                    android:text="Left Ventricular Hypertrophy"
+                    android:textSize="28sp"
+                    android:paddingRight="10dp"
                     />
                 <CheckBox
                     android:id="@+id/left_checkbox"
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
                     android:checked="false"
+                    android:gravity="center"
                     />
 
-        </LinearLayout>
+        </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:id="@+id/age_sex"
-            android:layout_below="@+id/left"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp">
 
-            >
-                <LinearLayout
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                        >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/age_text"
-                            android:text="Age"
-                            android:textSize="30sp"
-                            android:layout_marginRight="30dp"
+                    android:text="Age"
+                    android:textSize="28sp"
+
                             />
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignRight="@+id/age_text"
-                            android:inputType="number"
-                            android:text="18"
-                            android:textSize="30sp"
+
+                <EditText
+                    android:id="@+id/patient_age"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="18"
+                    android:textSize="25sp"
+                    android:paddingRight="10dp"
                                 />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-
-                    >
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sex"
-                            android:textSize="30sp"
-                            android:layout_marginRight="30sp"
+                            android:textSize="28sp"
 
                             />
                         <Spinner
                             android:id="@+id/sex_spinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
                             android:background="@android:drawable/btn_dropdown"
                             android:spinnerMode="dropdown"
+                            android:paddingRight="10dp"
                             />
-                </LinearLayout>
-
-        </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_below="@+id/sinus"
+                    android:background="@color/card_divider_gray" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -209,7 +301,9 @@
                     android:background="@color/colorPrimaryDark"
                     />
 
-        </RelativeLayout>
+        </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         </ScrollView>
 

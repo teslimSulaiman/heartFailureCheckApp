@@ -1,9 +1,17 @@
 package com.example.medapp.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.medapp.R;
 
+@Entity(tableName = "user")
 public class User {
     private boolean sinusCheckbox = false, arrhyCheckbox = false, conductionCheckbox = false, leftCheckbox = false;
+    String name = "Anonymous";
+    String age = "";
+    String sex = "";
+    int totalScore = 0;
 
     public User() {
     }
@@ -13,6 +21,42 @@ public class User {
         this.arrhyCheckbox = arrhyCheckbox;
         this.conductionCheckbox = conductionCheckbox;
         this.leftCheckbox = leftCheckbox;
+    }
+
+    //id for the database
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    public void setName(String pName) {
+        name = pName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAge(String pAge) {
+        age = pAge;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setSex(String pSex) {
+        sex = pSex;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 
     public boolean isSinusCheckbox() {
@@ -46,8 +90,16 @@ public class User {
     public void setLeftCheckbox(boolean leftCheckbox) {
         this.leftCheckbox = leftCheckbox;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
+    }
     public String builderMessage() {
-        int totalScore = 0;
+        //TODO: add patient name to the message if one exists
+        totalScore = 0;
         if(sinusCheckbox) {
             totalScore+=2;
         }
@@ -84,12 +136,9 @@ public class User {
             return  "Summary: The patient has a " + "95.4%" + " heart failure probability" + "\n" + "\n"
                     + "Advice: The patient is not fine and has a very high percentage of heart failure";
         }
-        if(totalScore == 5 || totalScore == 6) {
-           // builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyleRed);
-            return  "Summary: The patient has a " + "100%" + " heart failure probability" + "\n" + "\n"
-                    + "Advice: The patient is not fine and has a very high percentage of heart failure";
-        }
-        return "";
+        // builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyleRed);
+        return  "Summary: The patient has a " + "100%" + " heart failure probability" + "\n" + "\n"
+                + "Advice: The patient is not fine and has a very high percentage of heart failure";
     }
     public int dialogStyle() {
         int totalScore = 0;

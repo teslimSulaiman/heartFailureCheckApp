@@ -6,16 +6,10 @@
         android:icon="@drawable/icons8_internet_48"
         android:title="Online"
         app:showAsAction="ifRoom" />
-
     <item
-        android:id="@+id/records"
-        android:title="Records"
-        app:showAsAction="never"
-        />
+        android:id="@+id/delete_all"
+        android:icon="@drawable/ic_delete_icon"
+        android:title="Delete All"
+        app:showAsAction="always" />
 
-    <item
-        android:id="@+id/about_us"
-        android:title="About Us"
-        app:showAsAction="never"
-        />
 </menu>
